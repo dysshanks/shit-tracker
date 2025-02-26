@@ -1,4 +1,5 @@
 <?php
+
 global $conn;
 require_once '../../../../config/conn.php';
 
@@ -11,9 +12,14 @@ if ($name == "" || $email == "" || $password == "")
     die("Please fill in all the required fields.");
 }
 
-$query = "INSERT INTO userinfo (name, email, password) VALUES ('$name', '$email', '$password')";
+$query = "INSERT INTO userinfo (name, email, password) VALUES (':name', ':email', ':password')";
 $statement = $conn->prepare($query);
-$statement->execute();
+$statement->execute
+([
+    ':name' => $name,
+    ':email' => $email,
+    ':password' => $password
+]);
 
 header("location:../../../index.php");
 exit();

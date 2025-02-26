@@ -22,6 +22,7 @@ require_once "$base_url/resources/header.php";
             <label for="password"></label>
             <input type="password" id="password" name="password" placeholder="password">
             <input type="submit" value="login">
+            <p>don"t have an account? <a href="<?php echo $base_url ?>/public/regiter.php">Sign up</a></p>
         </form>
     </div>
 </main>
