@@ -16,12 +16,14 @@ require_once "$base_url/resources/header.php";
 ?>
 <main>
     <div class="wrapper">
-        <form action="<?php echo $base_url ?>/app/Http/Controllers/Auth/logincontroller.php" method="post">
+        <form action="<?php echo $base_url ?>/app/Http/Controllers/Auth/registercontroller.php" method="post">
             <label for="name">username</label>
             <input type="text" id="name" name="name" placeholder="username">
+            <label for="email"></label>
+            <input type="email" id="email" name="email" placeholder="email">
             <label for="password"></label>
             <input type="password" id="password" name="password" placeholder="password">
-            <input type="submit" value="login">
+            <input type="submit" value="regiter">
         </form>
     </div>
 </main>

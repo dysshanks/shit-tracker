@@ -1,4 +1,4 @@
-<?php global $baseUrl ?>
+<?php global $base_url ?>
 <footer>
 
 </footer>
