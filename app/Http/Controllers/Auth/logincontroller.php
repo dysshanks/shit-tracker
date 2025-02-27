@@ -1,6 +1,7 @@
 <?php
-session_start();
+
 global $conn, $base_url;
+
 require_once '../../../../config/conn.php';
 
 $username = $_POST["username"];
@@ -16,12 +17,15 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 if ($statement->rowCount() < 1 or !password_verify($password, $user['password']))
 {
+    header('location: '.$base_url.'/public/login.php');
+    exit("Please fill in all the required fields.");
     die("Error: Invalid username or password");
 }
 
-$_SESSION['user_id'] = $user['id'];
-$_SESSION['username'] = $user['username'];
+session_start();
+
+$_SESSION['id'] = $user['id'];
+$_SESSION['usr'] = $user['username'];
 
 header("location:$base_url/public/index.php");
-
-exit();
+exit;

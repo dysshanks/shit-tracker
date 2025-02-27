@@ -1,6 +1,7 @@
 <?php
 
-global $conn;
+global $conn, $base_url;
+
 require_once '../../../../config/conn.php';
 
 $name = $_POST['name'];
@@ -9,6 +10,8 @@ $password = $_POST['password'];
 
 if ($name == "" || $email == "" || $password == "")
 {
+    header('location: '.$base_url.'/public/login.php');
+    exit("Please fill in all the required fields.");
     die("Please fill in all the required fields.");
 }
 
@@ -21,5 +24,12 @@ $statement->execute
     ':password' => $password
 ]);
 
-header("location:../../../index.php");
-exit();
+$user = $statement->fetch(PDO::FETCH_ASSOC);
+
+session_start();
+$_SESSION['id'] = $user['id'];
+$_SESSION['usr'] = $user['username'];
+
+
+header("location:$base_url/public/index.php");
+exit;
