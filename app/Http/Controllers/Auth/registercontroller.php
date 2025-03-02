@@ -11,7 +11,6 @@ $password = $_POST['password'];
 if ($name == "" || $email == "" || $password == "")
 {
     header('location: '.$base_url.'/public/login.php');
-    exit("Please fill in all the required fields.");
     die("Please fill in all the required fields.");
 }
 

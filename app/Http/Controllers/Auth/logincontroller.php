@@ -18,7 +18,6 @@ $user = $statement->fetch(PDO::FETCH_ASSOC);
 if ($statement->rowCount() < 1 or !password_verify($password, $user['password']))
 {
     header('location: '.$base_url.'/public/login.php');
-    exit("Please fill in all the required fields.");
     die("Error: Invalid username or password");
 }
 
